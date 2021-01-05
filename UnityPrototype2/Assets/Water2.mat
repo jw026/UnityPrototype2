@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water2
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: cf1479ee3a3101740a70500c5ef7681f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -35,6 +35,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EdgeFoam:
+        m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -47,6 +51,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -55,24 +63,72 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
+    - _Colorworldlerp: 0
     - _Cutoff: 0.5
+    - _CutoffMax: 1
+    - _CutoffMin: 0
+    - _Depth: 1.36
     - _DetailNormalMapScale: 1
+    - _Distance: 3.88
     - _DstBlend: 0
+    - _EdgeFoamTile: 1.76
+    - _EdgePower: 0.227
+    - _EdgeScale: 1
+    - _Edgedistance: 1
+    - _Edgepower: 0.5213435
+    - _Float0: 0
+    - _Float3: 1
+    - _Foammask: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _IdkFloat1: 18.11
     - _Metallic: 0
     - _Mode: 0
+    - _NormalSpeed: 1.24
+    - _NormalStrenght: 0
+    - _NormalTile: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _PrimaryNoiseAngle: 0
+    - _PrimaryNoiseScale: 1
+    - _Refreactamount: 5.38
+    - _SeaFoamStrenght: 0.368
+    - _SecondaryNoiseAngle: 0
+    - _SecondaryNoiseScale: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Tesselation: 183.8
+    - _TesselationRange: 78.62
     - _UVSec: 0
+    - _WaveHeight: 0.73
+    - _WaveMultiplier: 1
+    - _WaveSpeed: 0.43
+    - _WaveTile: -0.56
     - _ZWrite: 1
+    - __dirty: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DistiortionDirection: {r: 0, g: 0, b: 0, a: 0}
+    - _DistortionMove: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FoamColor: {r: 1024, g: 1024, b: 1024, a: 0}
+    - _PanD2: {r: 0.52, g: 0, b: 0, a: 0}
+    - _PanDirection: {r: 0.98, g: -0.25, b: 0, a: 0}
+    - _PrimaryNoiseScroll: {r: 0, g: 0, b: 0, a: 0}
+    - _SecondaryNoiseScroll: {r: 0, g: 0, b: 0, a: 0}
+    - _TopColor: {r: 0.5801887, g: 0.7884651, b: 1, a: 1}
+    - _WaterColor: {r: 0, g: 0.7901602, b: 1, a: 0}
+    - _WaveStretch: {r: 0.24, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
