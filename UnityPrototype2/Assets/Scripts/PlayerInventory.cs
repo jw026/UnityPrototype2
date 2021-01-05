@@ -9,8 +9,10 @@ public class PlayerInventory : MonoBehaviour {
 
     private void Awake()
     {
+        uiInventory = FindObjectOfType<UI_Inventory>();
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
+        
     }
 
     public void AddItem(Item item)
