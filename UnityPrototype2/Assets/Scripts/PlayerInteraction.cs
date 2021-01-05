@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+
+
+    
+
     List<IInteractible> interactibles;
     public List<IInteractible> GetInteractibles()
     {
         return new List<IInteractible>(GetComponents<IInteractible>());
     }
+
 
 
     public IInteractible GetClosestIInteractible()

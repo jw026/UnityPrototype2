@@ -11,15 +11,16 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public CharacterController controller;
- //   [SerializeField] Animator animator;
+    [SerializeField] Animator animator;
     public float speed = 12f;
+    public float sprintModifier = 2f;
     public float gravity = -10f;
     public float jumpHeight = 2f;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    
+
 
     Vector3 velocity;
     bool isGrounded;
@@ -75,11 +76,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Vector3 move = transform.right * x + transform.forward * z;
-
+        float modifier = Input.GetButton("Sprint") ? sprintModifier : 1;
+        float animModifier = Input.GetButton("Sprint") ? 2 : 1;
+        animator.SetFloat("Walk", (move.z / 2) * animModifier);
+        animator.SetFloat("Strafe", move.x);
+        move = move.normalized;
+        move.z *= modifier;
         controller.Move(move * speed * Time.deltaTime);
 
-   
-        if(jumpPressed && isGrounded)
+
+        if (jumpPressed && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
