@@ -1,15 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Item : Interactible
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item", order = 1)]
+public class Item : ScriptableObject
 {
-    public Item thisPrefab;
-    public override void Interact()
-    {
-        base.Interact();
-        FindObjectOfType<PlayerInventory>().AddItem(thisPrefab.GetComponent<Item>());
-        Destroy(gameObject);
-    }
+    public string name;
+    public GameObject worldObjectPrefab;
 
 }

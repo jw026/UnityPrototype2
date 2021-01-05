@@ -5,7 +5,13 @@ using UnityEngine;
 public class Inventory
 {
 
-    public List<Item> itemList;
+    public List<Item> ItemList
+    {
+        get => itemList;
+    }
+    List<Item> itemList;
+
+
 
     public Inventory()
     {
@@ -19,4 +25,10 @@ public class Inventory
     {
         itemList.Add(item);
     }
+    public void RemoveItem(Item item)
+    {
+        itemList.Remove(item);
+    }
+
+
 }

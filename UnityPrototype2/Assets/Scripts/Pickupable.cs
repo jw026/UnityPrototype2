@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Pickupable : Interactible
 {
-    public Pickupable thisObjectsPrefab;
+    public Item item;
     public override void Interact()
     {
         base.Interact();
-        /* add thisobjectsprefab to player inventory */
+        FindObjectOfType<PlayerInventory>().AddItem(item);
+        Destroy(gameObject);
     }
 }

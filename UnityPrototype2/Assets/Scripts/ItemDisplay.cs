@@ -14,12 +14,21 @@ public class ItemDisplay : MonoBehaviour
         set
         {
             item = value;
-            itemName.text = item.name;
+            itemName.text = value.name;
 
         }
         get => item;
 
     }
+
+    public void DropItem()
+    {
+        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
+        playerInventory.DropItem(item);
+        FindObjectOfType<UI_Inventory>().RefreshDisplays();
+
+    }
+
 }
 
 

@@ -6,21 +6,21 @@ public class PlayerInteraction : MonoBehaviour
 {
 
 
-    
 
-    List<IInteractible> interactibles;
-    public List<IInteractible> GetInteractibles()
+
+    List<Interactible> interactibles;
+    public List<Interactible> GetInteractibles()
     {
-        return new List<IInteractible>(GetComponents<IInteractible>());
+        return new List<Interactible>(FindObjectsOfType<Interactible>());
     }
 
 
 
-    public IInteractible GetClosestIInteractible()
+    public Interactible GetClosestIInteractible()
     {
         if (interactibles.Count > 0)
         {
-            IInteractible closest = interactibles[0];
+            Interactible closest = interactibles[0];
             for (int i = 0; i < interactibles.Count; i++)
             {
                 if (Vector3.Distance(closest.transform.position, transform.position) > Vector3.Distance(interactibles[i].transform.position, transform.position))
@@ -30,6 +30,7 @@ public class PlayerInteraction : MonoBehaviour
             }
             return closest;
         }
+        Debug.Log("Did not find any interactibles");
         return null;
     }
 
@@ -39,15 +40,20 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact"))
         {
-            Debug.Log("Interacted");
-            if (closestInteractible != null) closestInteractible.Interact();
+            interactibles = GetInteractibles();
+            closestInteractible = GetClosestIInteractible();
+            if (closestInteractible != null)
+            {
+                Debug.Log("Interacting with " + closestInteractible.transform.name);
+                closestInteractible.Interact();
+            }
         }
     }
-    IInteractible closestInteractible;
+    Interactible closestInteractible;
     private void FixedUpdate()
     {
-        interactibles = GetInteractibles();
-        closestInteractible = GetClosestIInteractible();
+
+
 
     }
 

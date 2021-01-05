@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Interactible : MonoBehaviour, IInteractible
+public class Interactible : MonoBehaviour
 {
     public UnityEvent interactEvent;
 
@@ -12,7 +12,7 @@ public class Interactible : MonoBehaviour, IInteractible
 
     public virtual void Interact()
     {
-        Debug.Log(name + " was interacted with");
+
         interactEvent.Invoke();
     }
 
@@ -24,9 +24,4 @@ public class Interactible : MonoBehaviour, IInteractible
 
 }
 
-public interface IInteractible
-{
-    void Interact();
-    float InteractRadius { get; }
-    Transform transform { get; }
-}
+

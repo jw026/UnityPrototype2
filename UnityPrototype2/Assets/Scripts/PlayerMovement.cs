@@ -49,13 +49,16 @@ public class PlayerMovement : MonoBehaviour
         jump.Enable();
     }
 #endif
-
+    [SerializeField] float sensitivity = 10;
     // Update is called once per frame
     void Update()
     {
         float x;
         float z;
         bool jumpPressed = false;
+
+
+        transform.Rotate(new Vector3(0, sensitivity * 360 * Time.deltaTime * Input.GetAxis("Mouse X"), 0));
 
 #if ENABLE_INPUT_SYSTEM
         var delta = movement.ReadValue<Vector2>();
@@ -74,16 +77,19 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
-
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector2 norm = new Vector2(x, z).normalized;
+        x = norm.x;
+        z = norm.y;
+     
         float modifier = Input.GetButton("Sprint") ? sprintModifier : 1;
-        float animModifier = Input.GetButton("Sprint") ? 2 : 1;
-        animator.SetFloat("Walk", (move.z / 2) * animModifier);
-        animator.SetFloat("Strafe", move.x);
-        move = move.normalized;
-        move.z *= modifier;
+
+        z *= modifier;
+        Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
 
+        float animModifier = Input.GetButton("Sprint") ? 2 : 1;
+        animator.SetFloat("Walk", (z / 2) * animModifier);
+        animator.SetFloat("Strafe", x);
 
         if (jumpPressed && isGrounded)
         {
