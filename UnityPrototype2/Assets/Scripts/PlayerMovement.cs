@@ -1,7 +1,5 @@
 
-#if ENABLE_INPUT_SYSTEM 
-using UnityEngine.InputSystem;
-#endif
+
 
 using System.Collections;
 using System.Collections.Generic;
@@ -25,30 +23,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
-#if ENABLE_INPUT_SYSTEM
-    InputAction movement;
-    InputAction jump;
 
-    void Start()
-    {
-        movement = new InputAction("PlayerMovement", binding: "<Gamepad>/leftStick");
-        movement.AddCompositeBinding("Dpad")
-            .With("Up", "<Keyboard>/w")
-            .With("Up", "<Keyboard>/upArrow")
-            .With("Down", "<Keyboard>/s")
-            .With("Down", "<Keyboard>/downArrow")
-            .With("Left", "<Keyboard>/a")
-            .With("Left", "<Keyboard>/leftArrow")
-            .With("Right", "<Keyboard>/d")
-            .With("Right", "<Keyboard>/rightArrow");
-        
-        jump = new InputAction("PlayerJump", binding: "<Gamepad>/a");
-        jump.AddBinding("<Keyboard>/space");
-
-        movement.Enable();
-        jump.Enable();
-    }
-#endif
     [SerializeField] float sensitivity = 10;
     // Update is called once per frame
     void Update()
@@ -58,18 +33,15 @@ public class PlayerMovement : MonoBehaviour
         bool jumpPressed = false;
 
 
-        transform.Rotate(new Vector3(0, sensitivity * 360 * Time.deltaTime * Input.GetAxis("Mouse X"), 0));
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
 
-#if ENABLE_INPUT_SYSTEM
-        var delta = movement.ReadValue<Vector2>();
-        x = delta.x;
-        z = delta.y;
-        jumpPressed = Mathf.Approximately(jump.ReadValue<float>(), 1);
-#else
+
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
         jumpPressed = Input.GetButtonDown("Jump");
-#endif
+        Vector2 norm = new Vector2(x, z).normalized;
+        x = norm.x;
+        z = norm.y;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -77,9 +49,7 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
-        Vector2 norm = new Vector2(x, z).normalized;
-        x = norm.x;
-        z = norm.y;
+
      
         float modifier = Input.GetButton("Sprint") ? sprintModifier : 1;
 
