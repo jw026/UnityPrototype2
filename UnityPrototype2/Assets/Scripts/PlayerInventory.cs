@@ -19,13 +19,13 @@ public class PlayerInventory : MonoBehaviour
     public UnityEngine.UI.Text debugDisplay;
     private void Update()
     {
-        debugDisplay.text = "Items: ";
-        foreach (Item item in inventory.ItemList)
-        {
+        //debugDisplay.text = "Items: ";
+        //foreach (Item item in inventory.ItemList)
+        //{
 
-            if (item != null)
-                debugDisplay.text += item.name;
-        }
+        //    if (item != null)
+        //        debugDisplay.text += item.name;
+        //}
     }
     public void AddItem(Item item)
     {
