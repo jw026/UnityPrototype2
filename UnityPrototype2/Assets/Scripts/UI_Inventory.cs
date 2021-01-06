@@ -39,7 +39,7 @@ public class UI_Inventory : MonoBehaviour
     }
     public void RefreshDisplays()
     {
-        Debug.Log(($"Destroying {0} items" ,itemDisplays.Count));
+    //    Debug.Log(($"Destroying {0} items" ,itemDisplays.Count));
         foreach (ItemDisplay display in itemDisplays)
         {
             Destroy(display.gameObject);
