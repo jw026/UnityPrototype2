@@ -24,7 +24,9 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
 
 
-    [SerializeField] float sensitivity = 10;
+
+    [SerializeField]AudioSource playerJumpAudio;
+
     // Update is called once per frame
     void Update()
     {
@@ -43,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         x = norm.x;
         z = norm.y;
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask, QueryTriggerInteraction.Ignore);
 
         if (isGrounded && velocity.y < 0)
         {
@@ -69,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (jumpPressed && isGrounded)
         {
+            playerJumpAudio.Play();
             animator.SetBool("Jumping", true);
             animator.SetBool("Jumping", false);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
