@@ -59,11 +59,12 @@ public class Savemanager : MonoBehaviour
         currentSave.newGame = false;
         foreach (var item in PlayerInventory.inventory.ItemList)
         {
-            currentSave.inventoryItemPaths.Add(item.displayName);
+            currentSave.inventoryItemPaths.Add(item.name);
         }
         string jsonData = JsonUtility.ToJson(currentSave, true);
         // currentSave.lastCheckPoint = Checkpoint.LastCheckpoint.name;
         File.WriteAllText(savePath, jsonData);
+        
     }
 
 }
@@ -97,14 +98,15 @@ public class Save
         savedBools = new Dictionary<string, bool>();
         for (int i = 0; i < boolKeys.Count; i++)
         {
-            savedBools.Add(boolKeys[i], boolsToSave[i]);
+            if (!savedBools.ContainsKey(boolKeys[i]))
+                savedBools.Add(boolKeys[i], boolsToSave[i]);
         }
         string debugtext = "";
         foreach (var item in savedBools)
         {
             debugtext += item.Key + item.Value;
         }
-   
+
     }
 
 

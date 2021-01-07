@@ -8,7 +8,7 @@ public class KillPlane : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (player)
+        if (other.gameObject == player)
         {
             player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = Checkpoint.LastCheckpoint.transform.position;

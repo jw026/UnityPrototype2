@@ -1,13 +1,13 @@
 {
     "newGame": false,
     "playerPosition": {
-        "x": 11.776693344116211,
-        "y": 4.634799957275391,
-        "z": 1.7045800685882569
+        "x": -22.85818862915039,
+        "y": 2.3917436599731447,
+        "z": 5.521618366241455
     },
     "boolKeys": [],
     "boolsToSave": [],
-    "scene": "WalkTest",
+    "scene": "LevelBuild",
     "inventoryItemPaths": [],
-    "lastCheckPointName": ""
+    "lastCheckPointName": "Checkpoint1"
 }
