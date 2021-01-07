@@ -83,6 +83,15 @@ public class Save
             boolsToSave.Add(item.Value);
         }
     }
+    public void LoadBools()
+    {
+        savedBools = new Dictionary<string, bool>();
+        for (int i = 0; i < boolKeys.Count; i++)
+        {
+   //         savedBools.Add(boolKeys[i], )
+        } 
+    }
+
 
 }
 [System.Serializable]
