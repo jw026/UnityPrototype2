@@ -38,6 +38,8 @@ public class UI_Inventory : MonoBehaviour
     }
     public void OpenInventory()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         uIInventoryMenu.SetActive(true);
         open = true;
         RefreshDisplays();
@@ -68,6 +70,8 @@ public class UI_Inventory : MonoBehaviour
         uIInventoryMenu.SetActive(false);
         open = false;
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
 }

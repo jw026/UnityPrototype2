@@ -21,4 +21,9 @@ public class MainMenu : MonoBehaviour
         Savemanager.Instance.LoadSave();
       //  SceneManager.LoadScene(Savemanager.currentSave.scene);
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
 }
