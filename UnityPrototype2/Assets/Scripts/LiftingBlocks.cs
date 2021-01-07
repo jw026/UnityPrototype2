@@ -8,23 +8,9 @@ public class LiftingBlocks : MonoBehaviour
     public string saveKey;
     private void Start()
     {
-        if (saveKey != null)
+        if (saveKey != "")
         {
-            if (Savemanager.currentSave.savedBools.ContainsKey(saveKey+ "lock1"))
-            {
-                Lock1 = Savemanager.currentSave.savedBools[saveKey + "lock1"];
-            }else
-            {
-                Savemanager.currentSave.savedBools.Add(saveKey + "lock1", lock1);
-            }
-            if (Savemanager.currentSave.savedBools.ContainsKey(saveKey + "lock2"))
-            {
-                Lock2 = Savemanager.currentSave.savedBools[saveKey + "lock2"];
-                
-            }else
-            {
-                Savemanager.currentSave.savedBools.Add(saveKey + "lock2", lock2);
-            }
+            LoadState();
         }
     }
 
@@ -43,6 +29,7 @@ public class LiftingBlocks : MonoBehaviour
 
             }
             lock1 = value;
+            if (Lock1 && Lock2) LiftBlocks();
         }
     }
     public bool Lock2
@@ -57,6 +44,7 @@ public class LiftingBlocks : MonoBehaviour
 
             }
             lock2 = value;
+            if (Lock1 && Lock2) LiftBlocks();
         }
     }
 
@@ -89,18 +77,11 @@ public class LiftingBlocks : MonoBehaviour
 
     public void LoadState()
     {
-        if (saveKey != "")
+        Save save = Savemanager.currentSave;
+        if (save.savedBools.ContainsKey(saveKey + "lock1"))
         {
-            Save save = Savemanager.currentSave;
-            if (Savemanager.currentSave.savedBools.ContainsKey(saveKey + Lock1))
-            {
-                Lock1 = save.savedBools[saveKey + Lock1];
-            }
-            if (Savemanager.currentSave.savedBools.ContainsKey(saveKey + Lock2))
-            {
-                Lock2 = save.savedBools[saveKey + Lock2];
-            }
-            if (Lock1 && Lock2) LiftBlocks();
+            Lock1 = save.savedBools[saveKey + "lock1"];
+            Lock2 = save.savedBools[saveKey + "lock2"];
         }
     }
 

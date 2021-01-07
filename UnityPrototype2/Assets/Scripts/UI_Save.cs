@@ -9,7 +9,7 @@ public class UI_Save : MonoBehaviour
     public void SaveGame()
     {
         Savemanager.Instance.SaveGame();
-        SceneManager.LoadScene(mainMenuScene);
         Savemanager.currentSave = new Save();
+        SceneManager.LoadScene(mainMenuScene);
     }
 }

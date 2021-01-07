@@ -50,7 +50,13 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-     
+        if (isGrounded)
+        {
+            animator.SetBool("Falling", true);
+        }
+        else animator.SetBool("Falling", false);
+
+
         float modifier = Input.GetButton("Sprint") ? sprintModifier : 1;
 
         z *= modifier;
@@ -70,7 +76,15 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
     }
-
+    private void Start()
+    {
+        if (Checkpoint.LastCheckpoint != null)
+        {
+            GetComponent<CharacterController>().enabled = false;
+            transform.position = Checkpoint.LastCheckpoint.transform.position;
+            GetComponent<CharacterController>().enabled = true;
+        }
+    }
 
 
 }

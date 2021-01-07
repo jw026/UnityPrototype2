@@ -1,17 +1,12 @@
 {
     "playerPosition": {
-        "x": 18.346994400024415,
+        "x": 47.41489028930664,
         "y": 4.634799957275391,
-        "z": 10.984808921813965
+        "z": 0.7601797580718994
     },
-    "boolKeys": [
-        "Testblocklock1",
-        "Testblocklock2"
-    ],
-    "boolsToSave": [
-        true,
-        true
-    ],
+    "boolKeys": [],
+    "boolsToSave": [],
     "scene": "WalkTest",
-    "inventoryItemPaths": []
+    "inventoryItemPaths": [],
+    "lastCheckPointName": "CheckpointIsland"
 }
