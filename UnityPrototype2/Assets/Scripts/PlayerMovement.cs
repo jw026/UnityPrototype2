@@ -52,9 +52,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            animator.SetBool("Falling", true);
+            animator.SetBool("Falling", false);
         }
-        else animator.SetBool("Falling", false);
+        else animator.SetBool("Falling", true);
 
 
         float modifier = Input.GetButton("Sprint") ? sprintModifier : 1;
@@ -69,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (jumpPressed && isGrounded)
         {
+            animator.SetBool("Jumping", true);
+            animator.SetBool("Jumping", false);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
