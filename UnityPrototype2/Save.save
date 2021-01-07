@@ -1,12 +1,13 @@
 {
+    "newGame": false,
     "playerPosition": {
-        "x": 47.41489028930664,
-        "y": 4.634799957275391,
-        "z": 0.7601797580718994
+        "x": 16.84828758239746,
+        "y": 4.857426166534424,
+        "z": -9.867022514343262
     },
     "boolKeys": [],
     "boolsToSave": [],
     "scene": "WalkTest",
     "inventoryItemPaths": [],
-    "lastCheckPointName": "CheckpointIsland"
+    "lastCheckPointName": ""
 }

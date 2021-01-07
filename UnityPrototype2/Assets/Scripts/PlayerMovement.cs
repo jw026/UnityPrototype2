@@ -24,14 +24,16 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
 
 
-    [SerializeField] float sensitivity = 10;
+
+    [SerializeField] AudioSource playerJumpAudio;
+
     // Update is called once per frame
     void Update()
     {
         float x;
         float z;
         bool jumpPressed = false;
-        Savemanager.currentSave.playerPosition = transform.position;
+
 
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
 
@@ -43,18 +45,20 @@ public class PlayerMovement : MonoBehaviour
         x = norm.x;
         z = norm.y;
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask, QueryTriggerInteraction.Ignore);
 
         if (isGrounded && velocity.y < 0)
         {
+       
             velocity.y = -2f;
         }
 
         if (isGrounded)
         {
-            animator.SetBool("Falling", true);
+            Savemanager.currentSave.playerPosition = transform.position;
+            animator.SetBool("Falling", false);
         }
-        else animator.SetBool("Falling", false);
+        else animator.SetBool("Falling", true);
 
 
         float modifier = Input.GetButton("Sprint") ? sprintModifier : 1;
@@ -69,6 +73,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (jumpPressed && isGrounded)
         {
+            playerJumpAudio.Play();
+            animator.SetBool("Jumping", true);
+            animator.SetBool("Jumping", false);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
@@ -78,10 +85,10 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
-        if (Checkpoint.LastCheckpoint != null)
+        if (!Savemanager.currentSave.newGame)
         {
             GetComponent<CharacterController>().enabled = false;
-            transform.position = Checkpoint.LastCheckpoint.transform.position;
+            transform.position = Savemanager.currentSave.playerPosition;
             GetComponent<CharacterController>().enabled = true;
         }
     }
