@@ -56,6 +56,7 @@ public class Savemanager : MonoBehaviour
     {
         currentSave.inventoryItemPaths = new List<string>();
         currentSave.SaveBools();
+        currentSave.newGame = false;
         foreach (var item in PlayerInventory.inventory.ItemList)
         {
             currentSave.inventoryItemPaths.Add(item.displayName);
@@ -73,6 +74,7 @@ public class Savemanager : MonoBehaviour
 [System.Serializable]
 public class Save
 {
+    public bool newGame = true;
     public Vector3 playerPosition = new Vector3();
     public Dictionary<string, bool> savedBools = new Dictionary<string, bool>();
     public List<string> boolKeys = new List<string>();
@@ -107,12 +109,4 @@ public class Save
 
 
 }
-[System.Serializable]
-public struct SerializableVector3
-{
-    public float x;
-    public float y;
-    public float z;
 
-
-}

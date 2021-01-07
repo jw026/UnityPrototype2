@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    [SerializeField]AudioSource playerJumpAudio;
+    [SerializeField] AudioSource playerJumpAudio;
 
     // Update is called once per frame
     void Update()
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         float x;
         float z;
         bool jumpPressed = false;
-        Savemanager.currentSave.playerPosition = transform.position;
+
 
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
 
@@ -49,11 +49,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded && velocity.y < 0)
         {
+       
             velocity.y = -2f;
         }
 
         if (isGrounded)
         {
+            Savemanager.currentSave.playerPosition = transform.position;
             animator.SetBool("Falling", false);
         }
         else animator.SetBool("Falling", true);
@@ -83,10 +85,10 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
-        if (Checkpoint.LastCheckpoint != null)
+        if (!Savemanager.currentSave.newGame)
         {
             GetComponent<CharacterController>().enabled = false;
-            transform.position = Checkpoint.LastCheckpoint.transform.position;
+            transform.position = Savemanager.currentSave.playerPosition;
             GetComponent<CharacterController>().enabled = true;
         }
     }

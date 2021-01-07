@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         Savemanager.currentSave.scene = newGameScene;
+        Savemanager.currentSave.newGame = true;
         SceneManager.LoadScene(newGameScene);
         
     }
