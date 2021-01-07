@@ -38,15 +38,20 @@ public class Savemanager : MonoBehaviour
         if (File.Exists(savePath))
         {
             currentSave = JsonUtility.FromJson<Save>(File.ReadAllText(savePath));
+            currentSave.LoadBools();
             SceneManager.LoadScene(currentSave.scene);
             PlayerInventory.inventory = new Inventory();
             foreach (var item in currentSave.inventoryItemPaths)
             {
                 PlayerInventory.inventory.AddItem(Resources.Load<Item>("Items/" + item));
             }
+
         }
         else Debug.Log("no save found");
     }
+
+
+
     public void SaveGame()
     {
         currentSave.inventoryItemPaths = new List<string>();
@@ -56,7 +61,7 @@ public class Savemanager : MonoBehaviour
             currentSave.inventoryItemPaths.Add(item.displayName);
         }
         string jsonData = JsonUtility.ToJson(currentSave, true);
-
+        // currentSave.lastCheckPoint = Checkpoint.LastCheckpoint.name;
         File.WriteAllText(savePath, jsonData);
     }
 
@@ -74,6 +79,8 @@ public class Save
     public List<bool> boolsToSave = new List<bool>();
     public string scene = "";
     public List<string> inventoryItemPaths = new List<string>();
+    public string lastCheckPointName = "";
+
 
     public void SaveBools()
     {
@@ -88,8 +95,14 @@ public class Save
         savedBools = new Dictionary<string, bool>();
         for (int i = 0; i < boolKeys.Count; i++)
         {
-   //         savedBools.Add(boolKeys[i], )
-        } 
+            savedBools.Add(boolKeys[i], boolsToSave[i]);
+        }
+        string debugtext = "";
+        foreach (var item in savedBools)
+        {
+            debugtext += item.Key + item.Value;
+        }
+   
     }
 
 
