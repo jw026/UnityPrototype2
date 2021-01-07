@@ -12,21 +12,15 @@ public class PlayerInventory : MonoBehaviour
     private void Awake()
     {
         uiInventory = FindObjectOfType<UI_Inventory>();
-        if (inventory == null) inventory = new Inventory();
-//        uiInventory.SetInventory(inventory);
+        if (inventory == null)
+        {
+            Debug.Log("making new inventory");
+            inventory = new Inventory();
 
+        }
     }
-    public UnityEngine.UI.Text debugDisplay;
-    private void Update()
-    {
-        //debugDisplay.text = "Items: ";
-        //foreach (Item item in inventory.ItemList)
-        //{
 
-        //    if (item != null)
-        //        debugDisplay.text += item.name;
-        //}
-    }
+
     public void AddItem(Item item)
     {
         inventory.AddItem(item);

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f968711de514c9449b722d5f5d2ac472, type: 3}
-  m_Name: Key2
+  m_Name: HotStone
   m_EditorClassIdentifier: 
-  name: Blue cube
-  worldObjectPrefab: {fileID: 8680834784584800664, guid: 10bdbce8633a00549b2909c32165da83, type: 3}
+  displayName: Hot Stone
+  worldObjectPrefab: {fileID: 2409563381450211275, guid: b233276e4664c11478eb2063961627e4, type: 3}

@@ -1,0 +1,17 @@
+{
+    "playerPosition": {
+        "x": 18.346994400024415,
+        "y": 4.634799957275391,
+        "z": 10.984808921813965
+    },
+    "boolKeys": [
+        "Testblocklock1",
+        "Testblocklock2"
+    ],
+    "boolsToSave": [
+        true,
+        true
+    ],
+    "scene": "WalkTest",
+    "inventoryItemPaths": []
+}

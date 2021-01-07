@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class UI_Inventory : MonoBehaviour
 {
-    private bool open = false;
-
+    private static bool open = false;
+    public static bool Paused
+    {
+        get => open;
+    }
     [SerializeField] ItemDisplay itemDisplay;
     [SerializeField] ItemDisplay itemDisplay2;
     [SerializeField] GameObject uIInventoryMenu;
     List<ItemDisplay> itemDisplays = new List<ItemDisplay>();
 
 
+
     public void Start()
     {
+
         RefreshDisplays();
         CloseInventory();
         itemDisplay.gameObject.SetActive(false);
         itemDisplay2.gameObject.SetActive(false);
+        
     }
 
 
@@ -39,7 +45,7 @@ public class UI_Inventory : MonoBehaviour
     }
     public void RefreshDisplays()
     {
-    //    Debug.Log(($"Destroying {0} items" ,itemDisplays.Count));
+        //    Debug.Log(($"Destroying {0} items" ,itemDisplays.Count));
         foreach (ItemDisplay display in itemDisplays)
         {
             Destroy(display.gameObject);

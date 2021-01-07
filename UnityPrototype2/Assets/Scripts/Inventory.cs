@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Inventory
 {
 
@@ -16,9 +17,6 @@ public class Inventory
     public Inventory()
     {
         itemList = new List<Item>();
-
-        
-        Debug.Log(itemList.Count);
     }
 
     public void AddItem(Item item)

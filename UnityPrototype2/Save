@@ -1,0 +1,14 @@
+{
+    "playerPosition": {
+        "x": 12.418437004089356,
+        "y": 5.349659442901611,
+        "z": 1.1821757555007935
+    },
+    "scene": "WalkTest",
+    "inventoryItemPaths": [
+        "Sphere",
+        "Sphere",
+        "Sphere",
+        "Sphere"
+    ]
+}

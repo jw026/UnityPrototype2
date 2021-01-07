@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         float x;
         float z;
         bool jumpPressed = false;
-
+        Savemanager.currentSave.playerPosition = transform.position;
 
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
 
@@ -70,4 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
     }
+
+
+
 }

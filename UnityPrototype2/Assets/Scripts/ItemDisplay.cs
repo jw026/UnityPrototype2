@@ -14,7 +14,7 @@ public class ItemDisplay : MonoBehaviour
         set
         {
             item = value;
-            itemName.text = value.name;
+            itemName.text = value.displayName;
 
         }
         get => item;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pickupable : Interactible
 {
     public Item item;
+    public bool SavePosition;
     public override void Interact()
     {
         base.Interact();
